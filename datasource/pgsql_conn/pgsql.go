@@ -2,7 +2,9 @@ package pgsql_conn
 
 import (
 	"RabbitWeb/config"
+	"RabbitWeb/datamodels"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"log"
 	"time"
 )
@@ -25,6 +27,8 @@ func init() {
 		log.Println("DB Error=================================")
 	}
 
+	PgDb.LogMode(config.MyConfig.App.Debug)
+
 	PgDb.DB().SetConnMaxLifetime(time.Hour * config.MyConfig.Pgsql.TimeOut)
 	PgDb.DB().SetMaxIdleConns(config.MyConfig.Pgsql.MaxIdle)
 	PgDb.DB().SetMaxOpenConns(config.MyConfig.Pgsql.MaxOpen)
@@ -35,5 +39,9 @@ func init() {
 
 // 数据库映射
 func mapping() {
-
+	PgDb.AutoMigrate(
+		&datamodels.RabNav{},
+		&datamodels.RabVideoList{},
+		&datamodels.RabVideo{},
+	)
 }

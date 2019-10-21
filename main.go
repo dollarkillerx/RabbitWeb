@@ -8,6 +8,7 @@ package main
 
 import (
 	"RabbitWeb/config"
+	_ "RabbitWeb/datasource/pgsql_conn"
 	"github.com/dollarkillerx/erguotou"
 )
 
