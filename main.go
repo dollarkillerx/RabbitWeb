@@ -9,11 +9,19 @@ package main
 import (
 	"RabbitWeb/config"
 	_ "RabbitWeb/datasource/pgsql_conn"
+	"RabbitWeb/web/router"
 	"github.com/dollarkillerx/erguotou"
 )
 
 func main() {
 	app := erguotou.New()
+
+	app.Use(erguotou.Logger)
+
+	app.Status("/static","web/view/static")
+
+	// 注册前端
+	router.RegisterApp(app)
 
 	err := app.Run(
 		erguotou.SetHost(config.MyConfig.App.Host),
