@@ -1,0 +1,22 @@
+# 通用配置文件
+
+app:
+  host: "0.0.0.0:8082"
+  log_level: "debug"
+  debug: true
+  max_request: 1000
+
+mysql:
+  dsn: "host=myhost user=gorm dbname=gorm sslmode=disable password=mypassword"
+
+pgsql:
+  dsn: "host=127.0.0.1 user=postgres dbname=doratv sslmode=disable password=123456"
+  max_idle: 10 # 最大闲置链接数
+  max_open: 100 # 最大链接数
+  time_out: 4 # 超时 Hour
+
+redis:
+  maxidle: 50 # 连接池中最大空闲连接数量
+  max_active: 30 # 最大连接数量
+  idle_timeout: 300 # 最大超时时间(s)
+  port: "127.0.0.1:6379"
