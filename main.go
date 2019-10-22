@@ -18,7 +18,7 @@ func main() {
 
 	app.Use(erguotou.Logger)
 
-	app.Status("/static","web/view/static")
+	app.Status("/static", "web/view/static")
 
 	// 注册前端
 	router.RegisterApp(app)

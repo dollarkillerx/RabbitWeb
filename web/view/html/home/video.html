@@ -1,0 +1,221 @@
+{% define "home/video.html" %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <title>RabbitWeb梦蓝字幕组</title>
+    {% template "template/header.html" %}
+    <script src="https://cdn.staticfile.org/vue/2.6.10/vue.min.js"></script>
+    <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.8.2/skins/default/aliplayer-min.css"/>
+    <script type="text/javascript" charset="utf-8"
+            src="https://g.alicdn.com/de/prismplayer/2.8.2/aliplayer-min.js"></script>
+</head>
+
+<body>
+{% template "template/nav.html" %}
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <h2 class="text-success" style="margin-bottom: 26px">多啦A梦
+
+            </h2>
+            <!-- Vue -->
+            <div id="app">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card card_default mb-4 box-shadow">
+
+
+                            <div class="prism-player" id="player-con"></div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <button onclick="player()">Col</button>
+            </div>
+            <!-- VueEnd -->
+        </div>
+
+
+    </div>
+</main>
+
+<script>
+    let vue = new Vue({
+        el: "#app",
+        data: {},
+        method: {
+            "player": function () {
+                console.log("Player");
+                let pla = new Aliplayer({
+                        "id": "player-con",
+                        "source": "",
+                        "width": "100%",
+                        "height": "500px",
+                        "autoplay": false,
+                        "isLive": false,
+                        "cover": "https://i.loli.net/2019/10/22/nBXWpLZtJyPQNGg.png",
+                        "rePlay": false,
+                        "playsinline": true,
+                        "preload": false,
+                        "controlBarVisibility": "hover",
+                        "useH5Prism": true,
+                        "skinLayout": [
+                            {
+                                "name": "bigPlayButton",
+                                "align": "blabs",
+                                "x": 30,
+                                "y": 80
+                            },
+                            {
+                                "name": "H5Loading",
+                                "align": "cc"
+                            },
+                            {
+                                "name": "infoDisplay"
+                            },
+                            {
+                                "name": "tooltip",
+                                "align": "blabs",
+                                "x": 0,
+                                "y": 56
+                            },
+                            {
+                                "name": "thumbnail"
+                            },
+                            {
+                                "name": "controlBar",
+                                "align": "blabs",
+                                "x": 0,
+                                "y": 0,
+                                "children": [
+                                    {
+                                        "name": "progress",
+                                        "align": "blabs",
+                                        "x": 0,
+                                        "y": 44
+                                    },
+                                    {
+                                        "name": "playButton",
+                                        "align": "tl",
+                                        "x": 15,
+                                        "y": 12
+                                    },
+                                    {
+                                        "name": "timeDisplay",
+                                        "align": "tl",
+                                        "x": 10,
+                                        "y": 7
+                                    },
+                                    {
+                                        "name": "fullScreenButton",
+                                        "align": "tr",
+                                        "x": 10,
+                                        "y": 12
+                                    },
+                                    {
+                                        "name": "volume",
+                                        "align": "tr",
+                                        "x": 5,
+                                        "y": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                );
+            }
+        },
+        create: function () {
+            let player = new Aliplayer({
+                    "id": "player-con",
+                    "source": "https://localstoragegit.bilibilil.cf/test2/index.m3u8",
+                    "width": "100%",
+                    "height": "500px",
+                    "autoplay": false,
+                    "isLive": false,
+                    "cover": "https://i.loli.net/2019/10/22/nBXWpLZtJyPQNGg.png",
+                    "rePlay": false,
+                    "playsinline": true,
+                    "preload": false,
+                    "controlBarVisibility": "hover",
+                    "useH5Prism": true,
+                    "skinLayout": [
+                        {
+                            "name": "bigPlayButton",
+                            "align": "blabs",
+                            "x": 30,
+                            "y": 80
+                        },
+                        {
+                            "name": "H5Loading",
+                            "align": "cc"
+                        },
+                        {
+                            "name": "infoDisplay"
+                        },
+                        {
+                            "name": "tooltip",
+                            "align": "blabs",
+                            "x": 0,
+                            "y": 56
+                        },
+                        {
+                            "name": "thumbnail"
+                        },
+                        {
+                            "name": "controlBar",
+                            "align": "blabs",
+                            "x": 0,
+                            "y": 0,
+                            "children": [
+                                {
+                                    "name": "progress",
+                                    "align": "blabs",
+                                    "x": 0,
+                                    "y": 44
+                                },
+                                {
+                                    "name": "playButton",
+                                    "align": "tl",
+                                    "x": 15,
+                                    "y": 12
+                                },
+                                {
+                                    "name": "timeDisplay",
+                                    "align": "tl",
+                                    "x": 10,
+                                    "y": 7
+                                },
+                                {
+                                    "name": "fullScreenButton",
+                                    "align": "tr",
+                                    "x": 10,
+                                    "y": 12
+                                },
+                                {
+                                    "name": "volume",
+                                    "align": "tr",
+                                    "x": 5,
+                                    "y": 10
+                                }
+                            ]
+                        }
+                    ]
+                }
+            );
+        }
+    })
+</script>
+
+
+{% template "template/footer.html" %}
+</body>
+
+</html>
+
+
+{% end %}
